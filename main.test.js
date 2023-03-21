@@ -1,20 +1,20 @@
 'use strict';
 
-const DoubleLinkedList = require('./main.js');
+const List = require('./main.js');
 
 test('Empty list length is 0', () => {
-  const list = new DoubleLinkedList();
+  const list = new List();
   expect(list.length()).toBe(0);
 });
 
 test('1 element was added. New list length is 1', () => {
-  const list = new DoubleLinkedList();
+  const list = new List();
   list.append('A');
   expect(list.length()).toBe(1);
 });
 
 test('The appended element has invalid type', () => {
-  const list = new DoubleLinkedList();
+  const list = new List();
   const error1 = () => list.append(1111);
   const error2 = () => list.append(11, 22);
   const error3 = () => list.append([444]);
@@ -25,7 +25,7 @@ test('The appended element has invalid type', () => {
 });
 
 test('The value is inserted in the defined position', () => {
-  const list = new DoubleLinkedList();
+  const list = new List();
   list.append('A');
   list.append('B');
   list.append('C');
@@ -36,7 +36,7 @@ test('The value is inserted in the defined position', () => {
 });
 
 test('The value to be inserted has invalid type', () => {
-  const list = new DoubleLinkedList();
+  const list = new List();
   list.append('A');
   list.append('B');
   list.append('C');
@@ -50,7 +50,7 @@ test('The value to be inserted has invalid type', () => {
 });
 
 test('The index to be inserted is out of range', () => {
-  const list = new DoubleLinkedList();
+  const list = new List();
   list.append('A');
   list.append('B');
   list.append('C');
@@ -64,7 +64,7 @@ test('The index to be inserted is out of range', () => {
 });
 
 test('Delete a specific element from the list', () => {
-  const list = new DoubleLinkedList();
+  const list = new List();
   list.append('A');
   list.append('B');
   list.append('C');
@@ -73,7 +73,7 @@ test('Delete a specific element from the list', () => {
 });
 
 test('The index to be deleted is out of range', () => {
-  const list = new DoubleLinkedList();
+  const list = new List();
   list.append('A');
   list.append('B');
   list.append('C');
@@ -87,7 +87,7 @@ test('The index to be deleted is out of range', () => {
 });
 
 test('Return of the deleted element', () => {
-  const list = new DoubleLinkedList();
+  const list = new List();
   list.append('A');
   list.append('B');
   list.append('C');
@@ -95,7 +95,7 @@ test('Return of the deleted element', () => {
 });
 
 test('The deleteAll method deletes all nodes with the specified value', () => {
-  const list = new DoubleLinkedList();
+  const list = new List();
 
   list.append('1');
   list.append('2');
@@ -108,7 +108,7 @@ test('The deleteAll method deletes all nodes with the specified value', () => {
 });
 
 test('Deleting an unexisting value - no changes', () => {
-  const list = new DoubleLinkedList();
+  const list = new List();
   list.append('1');
   list.append('1');
   list.append('1');
@@ -117,7 +117,7 @@ test('Deleting an unexisting value - no changes', () => {
 });
 
 test('After appending an element to the list, we can get this element', () => {
-  const list = new DoubleLinkedList();
+  const list = new List();
   list.append('A');
   list.append('B');
   list.append('C');
@@ -125,7 +125,7 @@ test('After appending an element to the list, we can get this element', () => {
 });
 
 test('The index to be get is out of range', () => {
-  const list = new DoubleLinkedList();
+  const list = new List();
   list.append('A');
   list.append('B');
   list.append('C');
@@ -139,7 +139,7 @@ test('The index to be get is out of range', () => {
 });
 
 test('Reversed list attempt', () => {
-  const list = new DoubleLinkedList();
+  const list = new List();
   list.append('A');
   list.append('B');
   list.append('C');
@@ -150,7 +150,7 @@ test('Reversed list attempt', () => {
 });
 
 test('Reversed list twice - no changes', () => {
-  const list = new DoubleLinkedList();
+  const list = new List();
   list.append('A');
   list.append('B');
   list.append('C');
@@ -162,7 +162,7 @@ test('Reversed list twice - no changes', () => {
 });
 
 test('A cloned list contains the same values as the original one', () => {
-  const list = new DoubleLinkedList();
+  const list = new List();
   list.append('A');
   list.append('B');
   list.append('C');
@@ -176,7 +176,7 @@ test('A cloned list contains the same values as the original one', () => {
 });
 
 test('Find the first element with a specific value', () => {
-  const list = new DoubleLinkedList();
+  const list = new List();
   list.append('1');
   list.append('2');
   list.append('2');
@@ -185,7 +185,7 @@ test('Find the first element with a specific value', () => {
 });
 
 test('If the searched element does not exist, findFirst method returns -1', () => {
-  const list = new DoubleLinkedList();
+  const list = new List();
   list.append('A');
   list.append('B');
   list.append('C');
@@ -193,12 +193,12 @@ test('If the searched element does not exist, findFirst method returns -1', () =
 });
 
 test('If the list is empty, findFirst method returns -1', () => {
-  const list = new DoubleLinkedList();
+  const list = new List();
   expect(list.findFirst('D')).toBe(-1);
 });
 
 test('Find the last element with a specific value', () => {
-  const list = new DoubleLinkedList();
+  const list = new List();
   list.append('1');
   list.append('2');
   list.append('2');
@@ -207,7 +207,7 @@ test('Find the last element with a specific value', () => {
 });
 
 test('If the searched element does not exist, findLast method returns -1', () => {
-  const list = new DoubleLinkedList();
+  const list = new List();
   list.append('A');
   list.append('B');
   list.append('C');
@@ -215,12 +215,12 @@ test('If the searched element does not exist, findLast method returns -1', () =>
 });
 
 test('If the list is empty, findLast method returns -1', () => {
-  const list = new DoubleLinkedList();
+  const list = new List();
   expect(list.findLast('Z')).toBe(-1);
 });
 
 test('Clear method makes the original list an empty one', () => {
-  const list = new DoubleLinkedList();
+  const list = new List();
   list.append('A');
   list.append('B');
   list.append('C');
@@ -230,9 +230,9 @@ test('Clear method makes the original list an empty one', () => {
 });
 
 test('The extension of the list with another one', () => {
-  const list = new DoubleLinkedList();
+  const list = new List();
   list.append('1');
-  const list2 = new DoubleLinkedList();
+  const list2 = new List();
   list2.append('2');
   list.extend(list2);
   expect(list.length()).toBe(2);
@@ -241,9 +241,9 @@ test('The extension of the list with another one', () => {
 });
 
 test('Changing list after extending does not change the list used to extend', () => {
-  const list = new DoubleLinkedList();
+  const list = new List();
   list.append('1');
-  const list2 = new DoubleLinkedList();
+  const list2 = new List();
   list2.append('2');
   list.extend(list2);
   list.delete(1);

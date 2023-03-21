@@ -8,7 +8,7 @@ class Node {
   }
 }
 
-class DoubleLinkedList {
+class List {
   constructor() {
     this.head = null;
     this.tail = null;
@@ -151,7 +151,7 @@ class DoubleLinkedList {
   }
 
   clone() {
-    const clonedList = new DoubleLinkedList();
+    const clonedList = new List();
     let i = 0;
     while (i < this.length()) {
       clonedList.append(this.get(i));
@@ -203,4 +203,4 @@ class DoubleLinkedList {
   }
 }
 
-module.exports = DoubleLinkedList;
+module.exports = List;
