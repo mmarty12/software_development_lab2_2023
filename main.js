@@ -48,70 +48,42 @@ class List {
   }
 
   reverse() {
-    let currentNode = this.head;
-    let temp = null;
-    while (currentNode) {
-      temp = currentNode.prev;
-      currentNode.prev = currentNode.next;
-      currentNode.next = temp;
-      currentNode = currentNode.prev;
-    }
-    temp = this.head;
-    this.head = this.tail;
-    this.tail = temp;
-    return this;
+    return this.list.reverse();
   }
 
   clone() {
-    const clonedList = new List();
+    let listClone = new List();
     let i = 0;
-    while (i < this.length()) {
-      clonedList.append(this.get(i));
+    while (i < this.list.length) {
+      listClone.append(this.list[i]);
       i++;
     }
-    return clonedList;
+    return listClone;
   }
 
   findFirst(data) {
-    let currentItem = this.head;
-    let index = 0;
-    while (currentItem) {
-      if (currentItem.value === data) {
-        return index;
-      }
-      currentItem = currentItem.next;
-      index++;
+    for (let i = 0; i < this.list.length; i++) {
+      if (this.list[i] === data) return i;
     }
     return -1;
   }
 
   findLast(data) {
-    let currentItem = this.tail;
-    let index = this.size - 1;
-    while (currentItem) {
-      if (currentItem.value === data) {
-        return index;
-      }
-      currentItem = currentItem.prev;
-      index--;
+    for (let i = this.list.length - 1; i >= 0; i--) {
+      if (this.list[i] === data) return i;
     }
     return -1;
   }
 
   clear() {
-    this.head = null;
-    this.tail = null;
-    this.size = 0;
+    this.list.splice(0, this.list.length);
   }
 
   extend(list) {
-    let currentElement = list.head;
-    let i = 0;
-    while (i < list.length()) {
-      this.append(currentElement.value);
-      currentElement = currentElement.next;
-      i++;
+    for (let i = 0; i < list.length(); i++) {
+      this.list.push(list.get(i));
     }
+    return this.list;
   }
 }
 
