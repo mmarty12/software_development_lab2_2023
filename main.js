@@ -62,18 +62,22 @@ class List {
   }
 
   findFirst(data) {
-    for (let i = 0; i < this.list.length; i++) {
-      if (this.list[i] === data) return i;
+    if (typeof data === 'string') {
+      for (let i = 0; i < this.list.length; i++) {
+        if (this.list[i] === data) return i;
+      }
+      return -1;
     }
-    return -1;
   }
 
   findLast(data) {
-    for (let i = this.list.length - 1; i >= 0; i--) {
-      if (this.list[i] === data) return i;
+    if (typeof data === 'string') {
+      for (let i = this.list.length - 1; i >= 0; i--) {
+        if (this.list[i] === data) return i;
+      }
+      return -1;
     }
-    return -1;
-  }
+  
 
   clear() {
     this.list.splice(0, this.list.length);
