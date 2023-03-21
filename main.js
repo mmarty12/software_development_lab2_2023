@@ -77,7 +77,7 @@ class List {
       }
       return -1;
     }
-  
+  }
 
   clear() {
     this.list.splice(0, this.list.length);
