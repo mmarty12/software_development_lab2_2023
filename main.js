@@ -1,138 +1,50 @@
 'use strict';
 
-class Node {
-  constructor(value) {
-    this.next = null;
-    this.prev = null;
-    this.value = value;
-  }
-}
-
 class List {
-  constructor() {
-    this.head = null;
-    this.tail = null;
-    this.size = 0;
-  }
+  list = [];
 
   length() {
-    if (this.size === 0) {
-      return 0;
-    } else {
-      return this.size;
-    }
+    return this.list.length;
   }
 
   append(data) {
     if (typeof data === 'string') {
-      const node = new Node(data);
-
-      if (!this.head) {
-        this.head = node;
-        this.tail = node;
-      } else {
-        this.tail.next = node;
-        node.prev = this.tail;
-        this.tail = node;
-      }
-      this.size++;
-    } else throw new Error(`Invalid type of data ${data}`);
+      this.list.push(data);
+    } else throw new Error(`Invalid type of data`);
   }
 
-  insert(value, index) {
-    if (typeof value === 'string') {
-      if (index < 0 || index >= this.size) {
-        throw new Error('Invalid index');
+  insert(data, index) {
+    if (typeof data === 'string') {
+      if (index < 0 || index > this.list.length) {
+        throw new Error(`Invalid index number`);
       }
-      const pointerToInsert = new Node(value);
-      if (index === 0) {
-        pointerToInsert.next = this.head;
-        this.head.prev = pointerToInsert;
-        this.head = pointerToInsert;
-      } else if (index === this.size) {
-        this.append(value);
-      } else {
-        let currentItem = this.head;
-        for (let i = 0; i < index; i++) {
-          currentItem = currentItem.next;
-        }
-        pointerToInsert.prev = currentItem.prev;
-        pointerToInsert.next = currentItem;
-        currentItem.prev.next = pointerToInsert;
-        currentItem.prev = pointerToInsert;
-      }
-
-      this.size++;
-    } else throw new Error(`Invalid type of value ${value}`);
+      this.list.splice(index, 0, data);
+    } else throw new Error(`Invalid type of data`);
   }
 
   delete(index) {
-    if (index <= 0 || index >= this.size) {
-      throw new Error('Invalid index');
+    if (index < 0 || index > this.list.length) {
+      throw new Error(`Invalid index number`);
     }
-    let currentItem = this.head;
-    let deletedNode;
-
-    if (index === 0) {
-      deletedNode = this.head;
-      this.head = this.head.next;
-      if (this.head) {
-        this.head.prev = null;
-      } else {
-        this.tail = null;
-      }
-    } else if (index === this.size - 1) {
-      deletedNode = this.tail;
-      this.tail = this.tail.prev;
-      this.tail.next = null;
-    } else {
-      for (let i = 0; i < index; i++) {
-        currentItem = currentItem.next;
-      }
-      deletedNode = currentItem;
-      currentItem.prev.next = currentItem.next;
-      currentItem.next.prev = currentItem.prev;
-    }
-
-    this.size--;
-
-    return deletedNode.value;
+    return this.list.splice(index, 1)[0];
   }
 
-  deleteAll(value) {
-    let currentItem = this.head;
-
-    while (currentItem) {
-      if (currentItem.value === value) {
-        if (currentItem === this.head) {
-          this.head = this.head.next;
-          if (this.head) {
-            this.head.prev = null;
-          } else {
-            this.tail = null;
-          }
-        } else if (currentItem === this.tail) {
-          this.tail = this.tail.prev;
-          this.tail.next = null;
-        } else {
-          currentItem.prev.next = currentItem.next;
-          currentItem.next.prev = currentItem.prev;
-        }
-        this.size--;
+  deleteAll(data) {
+    let i = 0;
+    while (i < this.list.length) {
+      if (this.list[i] === data) {
+        this.list.splice(i, 1);
+      } else {
+        i++;
       }
-      currentItem = currentItem.next;
     }
   }
 
   get(index) {
-    if (index < 0 || index >= this.size) {
-      throw new Error('Invalid index');
+    if (index < 0 || index > this.list.length) {
+      throw new Error(`Invalid index number`);
     }
-    let currentItem = this.head;
-    for (let i = 0; i < index; i++) {
-      currentItem = currentItem.next;
-    }
-    return currentItem.value;
+    return this.list[index];
   }
 
   reverse() {
