@@ -1,0 +1,22 @@
+{
+  "name": "software_development_lab2_2023",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmarty12/software_development_lab2_2023.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mmarty12/software_development_lab2_2023/issues"
+  },
+  "homepage": "https://github.com/mmarty12/software_development_lab2_2023#readme",
+  "devDependencies": {
+    "jest": "^29.5.0"
+  }
+}
